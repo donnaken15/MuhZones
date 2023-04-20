@@ -44,7 +44,7 @@ namespace Nanook.QueenBee.Parser
 			_text = text;
 			try
 			{
-				MuhZones.Program.DebugNames.Add(crc, text);
+				Program.DebugNames.Add(crc, text);
 			}
 			catch { }
 		}
@@ -139,8 +139,8 @@ namespace Nanook.QueenBee.Parser
 		{
 			if (HasText)
 				return _text;
-			if (MuhZones.Program.DebugNames.ContainsKey(_crc))
-				return MuhZones.Program.DebugNames[_crc];
+			if (Program.DebugNames.ContainsKey(_crc))
+				return Program.DebugNames[_crc];
 			return _crc.ToString("X").PadLeft(8, '0');
 		}
 

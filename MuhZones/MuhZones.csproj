@@ -140,6 +140,9 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Queenbee\Zlib\zlib.net.csproj" />
+    <None Include="sprite_missing.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="names.txt">

@@ -436,7 +436,7 @@ namespace Nanook.QueenBee.Parser
 				{
 					if (t != qbKey.Text)
 					{
-						try { MuhZones.Program.DebugNames.Add(qbKey.Crc, t); }
+						try { Program.DebugNames.Add(qbKey.Crc, t); }
 						catch { }
 						return t;
 					}

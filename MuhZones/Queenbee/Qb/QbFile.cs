@@ -416,7 +416,7 @@ namespace Nanook.QueenBee.Parser
 								!value.Contains("\\"))
 								try
 								{
-									MuhZones.Program.DebugNames.Add(key, s.Substring(pos + 1));
+									Program.DebugNames.Add(key, s.Substring(pos + 1));
 								}
 								catch { }
 						}
