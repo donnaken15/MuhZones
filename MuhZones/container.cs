@@ -8,6 +8,7 @@ public partial class container /*HAH*/ : Form
 	public Zones z;
 	public imglist ii;
 	public hiway hh;
+	public fonts ff;
 	public string fname = null;
 
 	public container(Zones zones)
@@ -21,10 +22,13 @@ public partial class container /*HAH*/ : Form
 		hh = new hiway(z.gfx, z.scn);
 		hh.MdiParent = this;
 		hh.Show();
+		ff = new fonts(z.fonts);
+		ff.MdiParent = this;
+		ff.Show();
 	}
 	void saveNormal(object sender, EventArgs e)
 	{
-		//z.Save();
+		z.Save();
 	}
 	void saveAs(object sender, EventArgs e)
 	{

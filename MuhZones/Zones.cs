@@ -10,7 +10,6 @@ using System.Drawing.Design;
 using System.ComponentModel.Design;
 using Bit = System.BitConverter;
 using System.Drawing.Imaging;
-//using System.Drawing.Imaging;
 
 public class Zones : IDisposable
 {
@@ -298,10 +297,10 @@ public class Zones : IDisposable
 			bw.Write(Eswap(head.w_clip));
 			bw.Write(Eswap(head.h_clip));
 			bw.Write(Eswap(head.unk1));
-			bw.Write(Eswap(head.mipmaps));
-			bw.Write(Eswap(head.bpp));
-			bw.Write(Eswap(head.compression));
-			bw.Write(Eswap(head.unk2));
+			bw.Write(head.mipmaps); // im stupid
+			bw.Write(head.bpp);
+			bw.Write(head.compression);
+			bw.Write(head.unk2);
 			bw.Write(Eswap(head.unk3));
 			bw.Write(Eswap(head.off_start));
 			bw.Write(Eswap(head.size));
@@ -425,13 +424,33 @@ public class Zones : IDisposable
 	public class Font
 	{
 		public QbKey Name;
-		public int baseline;
-		public int shifter;
-		public int spacing;
-		public float height;
+		[Category("Font"), DisplayName("Name")]
+		public string NameStr
+		{
+			get {
+				return Program.GetDebugName(Name);
+			}
+			set {
+				if (System.Text.RegularExpressions.Regex.IsMatch(value, "^[0-9a-fA-F]{8}$"))
+					value = Program.GetDebugName(uint.Parse(value, System.Globalization.NumberStyles.HexNumber));
+				QbKey q = QbKey.Create(value);
+				try { Program.DebugNames.Add(q.Crc, q.Text); }
+				catch { }
+				Name = q;
+			}
+		}
+		[Category("Font"), DisplayName("Baseline")]
+		public int baseline { get; set; }
+		[Category("Font"), DisplayName("Shifter")]
+		public int shifter { get; set; }
+		[Category("Font"), DisplayName("Spacing")]
+		public int spacing { get; set; }
+		[Category("Font"), DisplayName("Height")]
+		public float height { get; set; }
 		//glyphsPointer
 		public char[] glyphblock;
-		public float space_width;
+		[Category("Font"), DisplayName("Space Width")]
+		public float space_width { get; set; }
 		public struct Glyph
 		{
 			public float x, y, x2, y2, pxW, pxH, vShift, hShift, unk_d;
@@ -451,8 +470,6 @@ public class Zones : IDisposable
 		public RectangleF glyphRect(char glyph)
 		{
 			Glyph g = this[glyph];
-			//Console.WriteLine(glyph);
-			//Console.WriteLine(g.y2);
 			int w = texture.Image.Width, h = texture.Image.Height;
 			return RectangleF.FromLTRB(
 					(g.x * w), (g.y * h),
@@ -489,7 +506,6 @@ public class Zones : IDisposable
 			glyphs = new Glyph[glyphcount];
 			for (int i = 0; i < glyphcount; i++)
 			{
-				//glyphs[i] = new Glyph();
 				glyphs[i].x = Float(a, cursor);
 				cursor += 4;
 				glyphs[i].y = Float(a, cursor);
@@ -538,16 +554,6 @@ public class Zones : IDisposable
 		}
 		// INACCESSIBLE HOW
 		private Head head;
-		/*public int Count
-		{
-			get { return head.count; }
-			set
-			{
-				if (value > maxCount)
-					throw new OverflowException("This cannot exceed 128 textures as of now, otherwise the game will crash.");
-				head.count = (ushort)value;
-			}
-		}*/
 		private List<RawImg> Images;
 		public int Count { get { return Images.Count; } }
 		public List<RawImg>.Enumerator GetEnumerator() { return Images.GetEnumerator(); }
@@ -580,13 +586,6 @@ public class Zones : IDisposable
 				throw new FormatException("Invalid header.");
 			}
 			head.magic = Eswap(0xFACECAA7);
-			/*for (int i = 1; i < 8; i++)
-				if (Eswap(Bit.ToUInt32(a, i * 4)) != 0xFAAABACA)
-				{
-					head.size = 0xBAADF00D;
-					throw new FormatException("Invalid header.");
-					//return;
-				}*/
 			int cursor = 4;
 			head.unk1 = Eswap(Bit.ToUInt16(a, cursor));
 			cursor += 2;
@@ -695,6 +694,7 @@ public class Zones : IDisposable
 			// writing this as i have not tested
 			// or checked how mats load yet to
 			// see if i winged writing this
+			// ps: i basically did
 			public const int toffset = 0xA0;
 			public uint GetBase(int a)
 			{

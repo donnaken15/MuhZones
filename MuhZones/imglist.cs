@@ -13,10 +13,17 @@ public partial class imglist : Form
 	{
 		get
 		{
-			CreateParams parms = base.CreateParams;
-			parms.ClassStyle |= 0x200;  // CS_NOCLOSE
-			return parms;
+			CreateParams p = base.CreateParams;
+			p.ClassStyle |= 0x200;
+			return p;
 		}
+	}
+	protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+		if (keyData == (Keys.Control | Keys.F4)) {
+			Console.Beep();
+			return true;
+		}
+		return base.ProcessCmdKey(ref msg, keyData);
 	}
 	public imglist(List<Zones.RawImg> img)
 	{

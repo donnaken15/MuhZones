@@ -9,8 +9,6 @@ using Nanook.QueenBee.Parser;
 
 public partial class hiway : Form
 {
-	Zones.GFX gfx;
-	Zones.Scene scn;
 	protected override CreateParams CreateParams
 	{
 		get
@@ -20,6 +18,15 @@ public partial class hiway : Form
 			return p;
 		}
 	}
+	protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+		if (keyData == (Keys.Control | Keys.F4)) {
+			Console.Beep();
+			return true;
+		}
+		return base.ProcessCmdKey(ref msg, keyData);
+	}
+	Zones.GFX gfx;
+	Zones.Scene scn;
 	public hiway(Zones.GFX g, Zones.Scene s)
 	{
 		InitializeComponent();

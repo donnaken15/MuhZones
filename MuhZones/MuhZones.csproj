@@ -51,6 +51,10 @@
       <DependentUpon>container.cs</DependentUpon>
     </Compile>
     <Compile Include="DDS.cs" />
+    <Compile Include="fonts.cs" />
+    <Compile Include="fonts.Designer.cs">
+      <DependentUpon>fonts.cs</DependentUpon>
+    </Compile>
     <Compile Include="hiway.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,9 +117,16 @@
     <Compile Include="Queenbee\Zlib\Tree.cs" />
     <Compile Include="Queenbee\Zlib\ZlibStream.cs" />
     <Compile Include="Queenbee\Zlib\ZStream.cs" />
+    <Compile Include="setsymd.cs" />
+    <Compile Include="setsymd.Designer.cs">
+      <DependentUpon>setsymd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Zones.cs" />
     <EmbeddedResource Include="container.resx">
       <DependentUpon>container.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fonts.resx">
+      <DependentUpon>fonts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="hiway.resx">
       <DependentUpon>hiway.cs</DependentUpon>
@@ -136,6 +147,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="setsymd.resx">
+      <DependentUpon>setsymd.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
