@@ -44,6 +44,8 @@
 		this.matdel = new System.Windows.Forms.Button();
 		this.matadd = new System.Windows.Forms.Button();
 		this.textab = new System.Windows.Forms.TabPage();
+		this.texsave = new System.Windows.Forms.Button();
+		this.texedit = new System.Windows.Forms.Button();
 		this.texlist = new System.Windows.Forms.ListBox();
 		this.texdel = new System.Windows.Forms.Button();
 		this.texadd = new System.Windows.Forms.Button();
@@ -51,8 +53,6 @@
 		this.openimg = new System.Windows.Forms.OpenFileDialog();
 		this.saveimg = new System.Windows.Forms.SaveFileDialog();
 		this.coldiag = new System.Windows.Forms.ColorDialog();
-		this.texsave = new System.Windows.Forms.Button();
-		this.texedit = new System.Windows.Forms.Button();
 		((System.ComponentModel.ISupportInitialize)(this.splitter1)).BeginInit();
 		this.splitter1.Panel1.SuspendLayout();
 		this.splitter1.Panel2.SuspendLayout();
@@ -246,8 +246,8 @@
 		// matlist
 		// 
 		this.matlist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-								| System.Windows.Forms.AnchorStyles.Left) 
-								| System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Left) 
+						| System.Windows.Forms.AnchorStyles.Right)));
 		this.matlist.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.matlist.FormattingEnabled = true;
 		this.matlist.IntegralHeight = false;
@@ -261,6 +261,7 @@
 		// matdel
 		// 
 		this.matdel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.matdel.Enabled = false;
 		this.matdel.FlatStyle = System.Windows.Forms.FlatStyle.System;
 		this.matdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.matdel.Location = new System.Drawing.Point(23, 418);
@@ -273,6 +274,7 @@
 		// matadd
 		// 
 		this.matadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.matadd.Enabled = false;
 		this.matadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
 		this.matadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.matadd.Location = new System.Drawing.Point(0, 418);
@@ -297,11 +299,35 @@
 		this.textab.Text = "Textures";
 		this.textab.UseVisualStyleBackColor = true;
 		// 
+		// texsave
+		// 
+		this.texsave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.texsave.Enabled = false;
+		this.texsave.FlatStyle = System.Windows.Forms.FlatStyle.System;
+		this.texsave.Location = new System.Drawing.Point(105, 418);
+		this.texsave.Name = "texsave";
+		this.texsave.Size = new System.Drawing.Size(44, 23);
+		this.texsave.TabIndex = 10;
+		this.texsave.Text = "Save";
+		this.texsave.UseVisualStyleBackColor = true;
+		// 
+		// texedit
+		// 
+		this.texedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.texedit.Enabled = false;
+		this.texedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
+		this.texedit.Location = new System.Drawing.Point(46, 418);
+		this.texedit.Name = "texedit";
+		this.texedit.Size = new System.Drawing.Size(57, 23);
+		this.texedit.TabIndex = 9;
+		this.texedit.Text = "Replace";
+		this.texedit.UseVisualStyleBackColor = true;
+		// 
 		// texlist
 		// 
 		this.texlist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-								| System.Windows.Forms.AnchorStyles.Left) 
-								| System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Left) 
+						| System.Windows.Forms.AnchorStyles.Right)));
 		this.texlist.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.texlist.FormattingEnabled = true;
 		this.texlist.IntegralHeight = false;
@@ -315,6 +341,7 @@
 		// texdel
 		// 
 		this.texdel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.texdel.Enabled = false;
 		this.texdel.FlatStyle = System.Windows.Forms.FlatStyle.System;
 		this.texdel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.texdel.Location = new System.Drawing.Point(23, 418);
@@ -327,6 +354,7 @@
 		// texadd
 		// 
 		this.texadd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+		this.texadd.Enabled = false;
 		this.texadd.FlatStyle = System.Windows.Forms.FlatStyle.System;
 		this.texadd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.texadd.Location = new System.Drawing.Point(0, 418);
@@ -360,30 +388,6 @@
 		this.coldiag.AnyColor = true;
 		this.coldiag.Color = System.Drawing.Color.DimGray;
 		this.coldiag.FullOpen = true;
-		// 
-		// texsave
-		// 
-		this.texsave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-		this.texsave.Enabled = false;
-		this.texsave.FlatStyle = System.Windows.Forms.FlatStyle.System;
-		this.texsave.Location = new System.Drawing.Point(105, 418);
-		this.texsave.Name = "texsave";
-		this.texsave.Size = new System.Drawing.Size(44, 23);
-		this.texsave.TabIndex = 10;
-		this.texsave.Text = "Save";
-		this.texsave.UseVisualStyleBackColor = true;
-		// 
-		// texedit
-		// 
-		this.texedit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-		this.texedit.Enabled = false;
-		this.texedit.FlatStyle = System.Windows.Forms.FlatStyle.System;
-		this.texedit.Location = new System.Drawing.Point(46, 418);
-		this.texedit.Name = "texedit";
-		this.texedit.Size = new System.Drawing.Size(57, 23);
-		this.texedit.TabIndex = 9;
-		this.texedit.Text = "Replace";
-		this.texedit.UseVisualStyleBackColor = true;
 		// 
 		// hiway
 		// 

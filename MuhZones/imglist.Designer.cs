@@ -112,6 +112,7 @@
 		this.imgreplace.TabIndex = 4;
 		this.imgreplace.Text = "Replace";
 		this.imgreplace.UseVisualStyleBackColor = true;
+		this.imgreplace.Visible = false;
 		this.imgreplace.Click += new System.EventHandler(this.editimg);
 		// 
 		// imgdel
@@ -137,15 +138,16 @@
 		this.imgadd.TabIndex = 2;
 		this.imgadd.Text = "+";
 		this.imgadd.UseVisualStyleBackColor = true;
+		this.imgadd.Visible = false;
 		this.imgadd.Click += new System.EventHandler(this.addimg);
 		// 
 		// imagelist
 		// 
 		this.imagelist.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-								| System.Windows.Forms.AnchorStyles.Left) 
-								| System.Windows.Forms.AnchorStyles.Right)));
+						| System.Windows.Forms.AnchorStyles.Left) 
+						| System.Windows.Forms.AnchorStyles.Right)));
 		this.imagelist.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-								this.texname});
+						this.texname});
 		this.imagelist.Font = new System.Drawing.Font("MS Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 		this.imagelist.GridLines = true;
 		this.imagelist.HideSelection = false;

@@ -46,8 +46,11 @@ public partial class hiway : Form
 
 	private void selectmat(object sender, EventArgs e)
 	{
-		matprops.SelectedObject = Zones.Scene.Mat.Fancy(scn[matlist.SelectedIndex]);
-		drawmat();
+		try {
+			matprops.SelectedObject = Zones.Scene.Mat.Fancy(scn[matlist.SelectedIndex]);
+			drawmat();
+		}
+		catch {}
 	}
 	void drawfail()
 	{
@@ -163,6 +166,8 @@ public partial class hiway : Form
 		int ii = gfx.IndexOf(t.Crc);
 		if (ii == -1) { drawfail(); return; }
 		try {
+			if (matprev.Image != null)
+				matprev.Image.Dispose();
 			Bitmap iii = CreateNonIndexedImage(gfx[ii].Image);
 			Bitmap render;
 			//throw new Exception("Draw fail test");
@@ -243,6 +248,8 @@ public partial class hiway : Form
 						break;
 				}
 			}
+			iii.Dispose();
+			g.Dispose();
 			matprev.Image = render;
 		}
 		catch (Exception ex) {
@@ -251,6 +258,7 @@ public partial class hiway : Form
 				new Font("Microsoft Sans Serif", 11, FontStyle.Regular, GraphicsUnit.Pixel),
 				new Pen(Color.Red).Brush, 0.0f, 0.0f);
 		}
+		GC.Collect(2);
 	}
 	void clickbgcol(object sender, EventArgs e)
 	{
@@ -264,18 +272,23 @@ public partial class hiway : Form
 	uint matDisplayInterval = 0;
 	void tick0(object sender, EventArgs e)
 	{
-		matDisplayInterval++;
-		drawmat();
+		try {
+			matDisplayInterval++;
+			drawmat();
+		} catch {}
 	}
 	
 	void paintmat(object sender, PaintEventArgs e)
 	{
-		if (matprev.Image == null) return;
-		matprev.SizeMode =
-			(matprev.Width < matprev.Image.Width ||
-			matprev.Height < matprev.Image.Height) ?
-			PictureBoxSizeMode.Zoom :
-			PictureBoxSizeMode.CenterImage;
+		try {
+			if (matprev.Image == null) return;
+			matprev.SizeMode =
+				(matprev.Width < matprev.Image.Width ||
+				matprev.Height < matprev.Image.Height) ?
+				PictureBoxSizeMode.Zoom :
+				PictureBoxSizeMode.CenterImage;
+		}
+		catch {}
 	}
 	
 	bool locktab = true;
@@ -303,17 +316,20 @@ public partial class hiway : Form
 	
 	void selimg(object sender, EventArgs e)
 	{
-		if (texlist.SelectedIndices.Count > 0)
-		{
-			int index = texlist.SelectedIndices[0];
-			texview.Image = gfx[index].Image;
-			texprops.SelectedObject = gfx[index];
+		try {
+			if (texlist.SelectedIndices.Count > 0)
+			{
+				int index = texlist.SelectedIndices[0];
+				texview.Image = gfx[index].Image;
+				texprops.SelectedObject = gfx[index];
+			}
+			texdel.Enabled =
+				texedit.Enabled =
+				texsave.Enabled =
+				texlist.SelectedIndices.Count > 0;
+			matDisplayInterval = 0;
 		}
-		texdel.Enabled =
-			texedit.Enabled =
-			texsave.Enabled =
-			texlist.SelectedIndices.Count > 0;
-		matDisplayInterval = 0;
+		catch {}
 	}
 	
 	void updatetexprops(object s, PropertyValueChangedEventArgs e)

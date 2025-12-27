@@ -43,9 +43,13 @@ public partial class fonts : Form
 		}
 		Console.WriteLine("\nFont list done");
 	}
+	public Rectangle selectbox = nullbox;
+	public static readonly Rectangle nullbox = new Rectangle(-1,-1,-1,-1);
 	
 	void redrawText()
 	{
+		if (!(texteximg.Width > 0 && texteximg.Height > 0))
+			return;
 		if (texteximg.Image != null)
 			texteximg.Image.Dispose();
 		Bitmap rendered_text = new Bitmap(texteximg.Width, texteximg.Height);
@@ -115,5 +119,63 @@ public partial class fonts : Form
 	void updateTextEx(object sender, EventArgs e)
 	{
 		redrawText();
+	}
+	
+	float AspectRatio(Size sz)
+	{
+		return ((float)sz.Width / (float)sz.Height);
+	}
+	
+	void ged_click(object sender, MouseEventArgs e)
+	{
+		
+	}
+	
+	void ged_mmove(object sender, MouseEventArgs e)
+	{
+		return;
+		if (fontdisp.Image == null) return;
+		// hate me for this
+		// im small brained
+		Size fdsz = fontdisp.Size;
+		float fd_asp = AspectRatio(fdsz);
+		float tex_asp = AspectRatio(fontdisp.Image.Size);
+		SizeF diff = new SizeF(0,0);
+		bool stretchdir = fd_asp > tex_asp;
+		Size cutoff, scaled; // a blank side of the picturebox, and scale of texture to control
+		Graphics g = fontdisp.CreateGraphics();
+		if (stretchdir) // horiz
+		{
+			diff.Width = ((float)fdsz.Width / fontdisp.Image.Size.Width);
+			/*scaled = new Size(
+				(int)(((float)fdsz.Width / fontdisp.Image.Size.Width) * 100),
+				100);*/
+		}
+		else // vert
+		{
+			diff.Height = ((float)fdsz.Height / fontdisp.Image.Size.Height);
+			/*scaled = new Size(
+				100,
+				(int)(((float)fdsz.Height / fontdisp.Image.Size.Height) * 100));*/
+		}
+		//diff = (tex_asp - fd_asp);
+		//cutoff = new Size(
+			//(int)(((float)fdsz.Width * diff) / 2 - (fdsz.Width/2)),
+			//(int)(((float)fdsz.Height  * diff) / 2 - (fdsz.Height/2)));
+		g.DrawRectangle(new Pen(Color.Blue), 0, 0, diff.Width, 100);
+		g.DrawString("cutoff: "+diff.Width+",",
+			new Font("Arial",10f,GraphicsUnit.Pixel),
+			Brushes.Red, 4, 4);
+		GC.Collect(1);
+	}
+	
+	void ged_mrel(object sender, MouseEventArgs e)
+	{
+		
+	}
+	
+	void ihatemyself(object sender, EventArgs e)
+	{
+		
 	}
 }

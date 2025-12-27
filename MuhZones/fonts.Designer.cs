@@ -84,7 +84,7 @@ partial class fonts
 		this.fntlist.FormattingEnabled = true;
 		this.fntlist.Location = new System.Drawing.Point(0, 0);
 		this.fntlist.Name = "fntlist";
-		this.fntlist.Size = new System.Drawing.Size(156, 110);
+		this.fntlist.Size = new System.Drawing.Size(156, 102);
 		this.fntlist.TabIndex = 0;
 		this.fntlist.SelectedIndexChanged += new System.EventHandler(this.selectedfnt);
 		// 
@@ -102,7 +102,7 @@ partial class fonts
 		// splitter1.Panel2
 		// 
 		this.splitter1.Panel2.Controls.Add(this.splitter3);
-		this.splitter1.Size = new System.Drawing.Size(579, 518);
+		this.splitter1.Size = new System.Drawing.Size(579, 487);
 		this.splitter1.SplitterDistance = 156;
 		this.splitter1.TabIndex = 1;
 		// 
@@ -120,8 +120,8 @@ partial class fonts
 		// splitter2.Panel2
 		// 
 		this.splitter2.Panel2.Controls.Add(this.splitter4);
-		this.splitter2.Size = new System.Drawing.Size(156, 518);
-		this.splitter2.SplitterDistance = 240;
+		this.splitter2.Size = new System.Drawing.Size(156, 487);
+		this.splitter2.SplitterDistance = 196;
 		this.splitter2.TabIndex = 0;
 		// 
 		// splitter5
@@ -138,8 +138,8 @@ partial class fonts
 		// splitter5.Panel2
 		// 
 		this.splitter5.Panel2.Controls.Add(this.fntprops);
-		this.splitter5.Size = new System.Drawing.Size(156, 240);
-		this.splitter5.SplitterDistance = 110;
+		this.splitter5.Size = new System.Drawing.Size(156, 196);
+		this.splitter5.SplitterDistance = 102;
 		this.splitter5.TabIndex = 1;
 		// 
 		// fntprops
@@ -148,7 +148,7 @@ partial class fonts
 		this.fntprops.HelpVisible = false;
 		this.fntprops.Location = new System.Drawing.Point(0, 0);
 		this.fntprops.Name = "fntprops";
-		this.fntprops.Size = new System.Drawing.Size(156, 126);
+		this.fntprops.Size = new System.Drawing.Size(156, 90);
 		this.fntprops.TabIndex = 1;
 		this.fntprops.ToolbarVisible = false;
 		this.fntprops.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.editedfnt);
@@ -175,16 +175,19 @@ partial class fonts
 		this.splitter4.Panel2.Controls.Add(this.setlettersbtn);
 		this.splitter4.Panel2.Controls.Add(this.edittexbtn);
 		this.splitter4.Panel2.Controls.Add(this.exporttexbtn);
-		this.splitter4.Size = new System.Drawing.Size(156, 274);
-		this.splitter4.SplitterDistance = 112;
+		this.splitter4.Panel2.Enabled = false;
+		this.splitter4.Size = new System.Drawing.Size(156, 287);
+		this.splitter4.SplitterDistance = 125;
 		this.splitter4.TabIndex = 0;
 		// 
 		// glyphlist
 		// 
+		this.glyphlist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
 		this.glyphlist.Dock = System.Windows.Forms.DockStyle.Fill;
+		this.glyphlist.ForeColor = System.Drawing.Color.White;
 		this.glyphlist.Location = new System.Drawing.Point(0, 18);
 		this.glyphlist.Name = "glyphlist";
-		this.glyphlist.Size = new System.Drawing.Size(156, 94);
+		this.glyphlist.Size = new System.Drawing.Size(156, 107);
 		this.glyphlist.TabIndex = 5;
 		this.glyphlist.UseCompatibleStateImageBehavior = false;
 		this.glyphlist.View = System.Windows.Forms.View.Tile;
@@ -293,21 +296,26 @@ partial class fonts
 		this.splitter3.Panel2.Controls.Add(this.texteximg);
 		this.splitter3.Panel2.Controls.Add(this.textex);
 		this.splitter3.Panel2.Controls.Add(this.textprevlbl);
-		this.splitter3.Size = new System.Drawing.Size(419, 518);
-		this.splitter3.SplitterDistance = 243;
+		this.splitter3.Size = new System.Drawing.Size(419, 487);
+		this.splitter3.SplitterDistance = 311;
 		this.splitter3.TabIndex = 0;
 		// 
 		// fontdisp
 		// 
 		this.fontdisp.BackColor = System.Drawing.Color.Black;
+		this.fontdisp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
 		this.fontdisp.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 		this.fontdisp.Dock = System.Windows.Forms.DockStyle.Fill;
 		this.fontdisp.Location = new System.Drawing.Point(0, 0);
 		this.fontdisp.Name = "fontdisp";
-		this.fontdisp.Size = new System.Drawing.Size(419, 243);
+		this.fontdisp.Size = new System.Drawing.Size(419, 311);
 		this.fontdisp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
 		this.fontdisp.TabIndex = 0;
 		this.fontdisp.TabStop = false;
+		this.fontdisp.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ged_click);
+		this.fontdisp.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ged_mmove);
+		this.fontdisp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ged_mrel);
+		this.fontdisp.Resize += new System.EventHandler(this.ihatemyself);
 		// 
 		// texteximg
 		// 
@@ -316,7 +324,7 @@ partial class fonts
 		this.texteximg.Dock = System.Windows.Forms.DockStyle.Fill;
 		this.texteximg.Location = new System.Drawing.Point(0, 17);
 		this.texteximg.Name = "texteximg";
-		this.texteximg.Size = new System.Drawing.Size(419, 234);
+		this.texteximg.Size = new System.Drawing.Size(419, 135);
 		this.texteximg.TabIndex = 4;
 		this.texteximg.TabStop = false;
 		this.texteximg.SizeChanged += new System.EventHandler(this.updateTextEx);
@@ -325,7 +333,7 @@ partial class fonts
 		// textex
 		// 
 		this.textex.Dock = System.Windows.Forms.DockStyle.Bottom;
-		this.textex.Location = new System.Drawing.Point(0, 251);
+		this.textex.Location = new System.Drawing.Point(0, 152);
 		this.textex.Name = "textex";
 		this.textex.Size = new System.Drawing.Size(419, 20);
 		this.textex.TabIndex = 3;
@@ -346,7 +354,7 @@ partial class fonts
 		// 
 		this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.ClientSize = new System.Drawing.Size(579, 518);
+		this.ClientSize = new System.Drawing.Size(579, 487);
 		this.Controls.Add(this.splitter1);
 		this.Name = "fonts";
 		this.ShowIcon = false;

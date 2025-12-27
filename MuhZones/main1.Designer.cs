@@ -39,21 +39,23 @@
 		// 
 		this.toolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
 		this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-		this.toolNew,
-		this.toolOpen});
+						this.toolNew,
+						this.toolOpen});
 		this.toolStrip.Location = new System.Drawing.Point(0, 0);
 		this.toolStrip.Name = "toolStrip";
-		this.toolStrip.Size = new System.Drawing.Size(193, 25);
+		this.toolStrip.Size = new System.Drawing.Size(260, 25);
 		this.toolStrip.TabIndex = 1;
 		// 
 		// toolNew
 		// 
 		this.toolNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+		this.toolNew.Enabled = false;
 		this.toolNew.Image = ((System.Drawing.Image)(resources.GetObject("toolNew.Image")));
 		this.toolNew.ImageTransparentColor = System.Drawing.Color.Magenta;
 		this.toolNew.Name = "toolNew";
 		this.toolNew.Size = new System.Drawing.Size(23, 22);
 		this.toolNew.ToolTipText = "New Theme (copy default template)";
+		this.toolNew.Visible = false;
 		this.toolNew.Click += new System.EventHandler(this.gettemplate);
 		// 
 		// toolOpen
@@ -83,19 +85,18 @@
 		// 
 		this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.ClientSize = new System.Drawing.Size(193, 25);
+		this.ClientSize = new System.Drawing.Size(260, 25);
 		this.Controls.Add(this.toolStrip);
 		this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 		this.MaximizeBox = false;
 		this.Name = "main1";
 		this.ShowIcon = false;
 		this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-		this.Text = "MuhZones";
+		this.Text = "MuhZones (WIP!!!!)";
 		this.toolStrip.ResumeLayout(false);
 		this.toolStrip.PerformLayout();
 		this.ResumeLayout(false);
 		this.PerformLayout();
-
 	}
 
 	#endregion

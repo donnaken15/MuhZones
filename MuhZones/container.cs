@@ -34,4 +34,9 @@ public partial class container /*HAH*/ : Form
 	{
 		//z.Save(saveDiag.FileName);
 	}
+	
+	void autoGC_tick(object sender, EventArgs e)
+	{
+		GC.Collect();
+	}
 }

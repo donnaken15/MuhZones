@@ -26,24 +26,27 @@
 	/// </summary>
 	private void InitializeComponent()
 	{
+		this.components = new System.ComponentModel.Container();
 		System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(container));
 		this.tools = new System.Windows.Forms.ToolStrip();
 		this.savebtn = new System.Windows.Forms.ToolStripButton();
 		this.saveasbtn = new System.Windows.Forms.ToolStripButton();
 		this.stat = new System.Windows.Forms.StatusStrip();
+		this.autoGC = new System.Windows.Forms.Timer(this.components);
 		this.tools.SuspendLayout();
 		this.SuspendLayout();
 		// 
 		// tools
 		// 
 		this.tools.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-		this.savebtn,
-		this.saveasbtn});
+						this.savebtn,
+						this.saveasbtn});
 		this.tools.Location = new System.Drawing.Point(0, 0);
 		this.tools.Name = "tools";
-		this.tools.Size = new System.Drawing.Size(780, 25);
+		this.tools.Size = new System.Drawing.Size(833, 25);
 		this.tools.TabIndex = 1;
 		this.tools.Text = "toolStrip1";
+		this.tools.Visible = false;
 		// 
 		// savebtn
 		// 
@@ -67,17 +70,23 @@
 		// 
 		// stat
 		// 
-		this.stat.Location = new System.Drawing.Point(0, 604);
+		this.stat.Location = new System.Drawing.Point(0, 648);
 		this.stat.Name = "stat";
-		this.stat.Size = new System.Drawing.Size(780, 22);
+		this.stat.Size = new System.Drawing.Size(833, 22);
 		this.stat.TabIndex = 2;
 		this.stat.Text = "statusStrip1";
+		// 
+		// autoGC
+		// 
+		this.autoGC.Enabled = true;
+		this.autoGC.Interval = 5000;
+		this.autoGC.Tick += new System.EventHandler(this.autoGC_tick);
 		// 
 		// container
 		// 
 		this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 		this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-		this.ClientSize = new System.Drawing.Size(780, 626);
+		this.ClientSize = new System.Drawing.Size(833, 670);
 		this.Controls.Add(this.stat);
 		this.Controls.Add(this.tools);
 		this.IsMdiContainer = true;
@@ -88,8 +97,8 @@
 		this.tools.PerformLayout();
 		this.ResumeLayout(false);
 		this.PerformLayout();
-
 	}
+	private System.Windows.Forms.Timer autoGC;
 
     #endregion
 
